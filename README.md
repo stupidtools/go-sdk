@@ -4,7 +4,7 @@
 
 # Heartland & Global Payments Go SDK
 
-This SDK makes it easy to integrate your Go application with our Card Not Present and Card Present APIs. 
+This SDK makes it easy to integrate your Go application with our Card Not Present and Card 
 
 ## Solutions
 
