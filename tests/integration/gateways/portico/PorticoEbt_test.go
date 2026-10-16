@@ -16,7 +16,7 @@ import (
 
 func TestPorticoEbtTests(t *testing.T) {
 	config := serviceconfigs.NewPorticoConfig()
-	config.SecretApiKey = "skapi_cert_MaePAQBr-1QAqjfckFC8FTbRTT120bVQUlfVOjgCBw"
+	config.SecretApiKey = "skapi_cert_MaePAQBr-1QAqjfckFC8FTbRTT120bVQUlfVOjgCBw" //gitleaks:allow
 	config.ServiceUrl = "https://cert.api2.heartlandportico.com"
 
 	err := api.ConfigureService(config, "default")

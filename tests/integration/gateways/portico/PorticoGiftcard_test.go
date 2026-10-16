@@ -16,7 +16,7 @@ func TestPorticoGiftTests(t *testing.T) {
 	var card, track *paymentmethods.GiftCard
 
 	config := serviceconfigs.NewPorticoConfig()
-	config.SecretApiKey = "skapi_cert_MaePAQBr-1QAqjfckFC8FTbRTT120bVQUlfVOjgCBw"
+	config.SecretApiKey = "skapi_cert_MaePAQBr-1QAqjfckFC8FTbRTT120bVQUlfVOjgCBw" //gitleaks:allow
 	config.ServiceUrl = "https://cert.api2.heartlandportico.com"
 	config.EnableLogging = true
 	err := api.ConfigureService(config, "default")

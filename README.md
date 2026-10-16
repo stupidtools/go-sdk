@@ -2,9 +2,9 @@
     <img src="https://developer.globalpay.com/static/media/logo.dab7811d.svg" alt="Global Payments logo" title="Global Payments" align="right" width="225" />
 </a>
 
-# Heartland & Global Payments Go SDK
+# Global Payments Go SDK
 
-This SDK makes it easy to integrate your Go application with our Card Not Present and Card 
+This SDK makes it easy to integrate your Go application with our Card Not Present and Card Present APIs. 
 
 ## Solutions
 
@@ -30,7 +30,7 @@ go get https://github.com/globalpayments/go-sdk
 
 ## Documentation and Examples
 
-You can find the latest SDK documentation along with code examples and test cards on the [Global Payments](https://developer.realexpayments.com) and [Heartland](https://developer.heartlandpaymentsystems.com/documentation) Developer Hubs.
+You can find the latest SDK documentation along with code examples and test cards on the [Global Payments](https://developer.globalpay.com) Developer Hub.
 
 In addition you can find working examples in the our example code repository.
 

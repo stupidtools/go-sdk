@@ -12,7 +12,7 @@ import (
 
 func TestPorticoTokenManagementTests(t *testing.T) {
 	config := serviceconfigs.NewPorticoConfig()
-	config.SecretApiKey = "skapi_cert_MTyMAQBiHVEAewvIzXVFcmUd2UcyBge_eCpaASUp0A"
+	config.SecretApiKey = "skapi_cert_MTyMAQBiHVEAewvIzXVFcmUd2UcyBge_eCpaASUp0A" //gitleaks:allow
 	config.ServiceUrl = "https://cert.api2.heartlandportico.com"
 	config.EnableLogging = true
 	err := api.ConfigureService(config, "default")

@@ -29,8 +29,10 @@ import (
 	"github.com/globalpayments/go-sdk/api/utils"
 	"github.com/globalpayments/go-sdk/api/utils/enumutils"
 	"github.com/globalpayments/go-sdk/api/utils/extrautils"
-	"github.com/globalpayments/go-sdk/api/utils/packageutils"
+	"github.com/globalpayments/go-sdk/api/utils/releaseversionutils"
 	"github.com/globalpayments/go-sdk/api/utils/stringutils"
+	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -1176,7 +1178,7 @@ func (p *PorticoConnector) BuildEnvelope(et *utils.ElementTree, transaction *uti
 	_, _ = et.SubElementWithCdataValue(header, "PosReqDT", GetPosReqDT()) // Assuming getPosReqDT is a function that returns a date string
 	sdkNameVersionValue := p.SdkNameVersion
 	if p.SdkNameVersion == "" {
-		sdkNameVersionValue = "go;version=" + packageutils.GetPackageVersion()
+		sdkNameVersionValue = "go;version=" + releaseversionutils.GetReleaseVersion()
 	}
 	_, _ = et.SubElementWithCdataValue(header, "SDKNameVersion", sdkNameVersionValue)
 
@@ -1185,7 +1187,7 @@ func (p *PorticoConnector) BuildEnvelope(et *utils.ElementTree, transaction *uti
 		return "", err
 	}
 	_, _ = et.SubElementWithCdataValue(safData, "SAFIndicator", extrautils.IfThenElse(p.IsSAFDataSupported, "Y", "N"))
-	_, _ = et.SubElementWithCdataValue(safData, "SAFOrigDT", time.Now().Format(time.RFC3339))
+	_, _ = et.SubElementWithCdataValue(safData, "SAFOrigDT", effectiveNow().Format(time.RFC3339))
 
 	// Transaction
 	trans, err := et.SubElement(version1, "Transaction")
@@ -1200,9 +1202,17 @@ func (p *PorticoConnector) BuildEnvelope(et *utils.ElementTree, transaction *uti
 	return "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + res, nil
 }
 
+func effectiveNow() time.Time {
+	if ts := os.Getenv("SDK_TESTING_TIMESTAMP"); ts != "" {
+		if ms, err := strconv.ParseInt(ts, 10, 64); err == nil {
+			return time.UnixMilli(ms).UTC()
+		}
+	}
+	return time.Now()
+}
+
 func GetPosReqDT() string {
-	now := time.Now()
-	return now.Format(time.RFC3339)
+	return effectiveNow().Format(time.RFC3339)
 }
 
 func MapResponse(rawResponse string, paymentMethod abstractions.IPaymentMethod) (*transactions.Transaction, error) {

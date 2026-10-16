@@ -18,7 +18,7 @@ import (
 func TestPorticoEcommerceCofCert(t *testing.T) {
 
 	config := serviceconfigs.NewPorticoConfig()
-	config.SecretApiKey = "skapi_cert_MXDMBQDwa3IAA4GV7NGMqQA_wFR3_TNeamFWoNUu_Q"
+	config.SecretApiKey = "skapi_cert_MXDMBQDwa3IAA4GV7NGMqQA_wFR3_TNeamFWoNUu_Q" //gitleaks:allow
 	config.VersionNumber = "3026"
 	config.EnableLogging = true
 	config.SafDataSupported = false

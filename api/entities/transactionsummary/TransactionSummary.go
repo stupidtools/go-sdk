@@ -1040,7 +1040,13 @@ func HydrateTransactionSummary(root *utils.Element) *TransactionSummary {
 	summary.HasEcomPaymentData = root.GetString("HasEComPaymentData") == "1"
 	summary.InvoiceNumber = root.GetString("InvoiceNbr")
 	summary.IssuerResponseCode = root.GetString("IssuerRspCode")
+	if summary.IssuerResponseCode == "" {
+		summary.IssuerResponseCode = root.GetString("RspCode")
+	}
 	summary.IssuerResponseMessage = root.GetString("IssuerRspText")
+	if summary.IssuerResponseMessage == "" {
+		summary.IssuerResponseMessage = root.GetString("RspText")
+	}
 	summary.IssuerTransactionId = root.GetString("IssTxnId")
 	summary.MaskedAlias = root.GetString("GiftMaskedAlias")
 	summary.MaskedCardNumber = root.GetString("MaskedCardNbr")

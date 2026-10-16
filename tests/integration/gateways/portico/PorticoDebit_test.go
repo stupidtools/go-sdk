@@ -16,7 +16,7 @@ func TestPorticoDebitTests(t *testing.T) {
 	var track *paymentmethods.DebitTrackData
 
 	config := serviceconfigs.NewPorticoConfig()
-	config.SecretApiKey = "skapi_cert_MaePAQBr-1QAqjfckFC8FTbRTT120bVQUlfVOjgCBw"
+	config.SecretApiKey = "skapi_cert_MaePAQBr-1QAqjfckFC8FTbRTT120bVQUlfVOjgCBw" //gitleaks:allow
 	config.SafDataSupported = false
 	config.VersionNumber = "3026"
 	config.EnableLogging = true

@@ -28,7 +28,7 @@ func TestPorticoCreditTests(t *testing.T) {
 	var discountDetails entities.DiscountDetails
 
 	config := serviceconfigs.NewPorticoConfig()
-	config.SecretApiKey = "skapi_cert_MTeSAQAfG1UA9qQDrzl-kz4toXvARyieptFwSKP24w"
+	config.SecretApiKey = "skapi_cert_MTeSAQAfG1UA9qQDrzl-kz4toXvARyieptFwSKP24w" //gitleaks:allow
 	config.VersionNumber = "3026"
 	config.EnableLogging = true
 	config.SafDataSupported = false
